@@ -160,6 +160,56 @@ class HashMap {
 
     return arr;
   }
+
+  keys() {
+    const arr = [];
+
+    if (this.buckets.length === 0) {
+      return arr;
+    }
+
+    for (let i = 0; i < this.buckets.length; i++) {
+      if (this.buckets[i]) {
+        if (this.buckets[i].size === 1) {
+          arr.push(this.buckets[i].head.key);
+        } else {
+          let current = this.buckets[i].head;
+
+          while (current) {
+            arr.push(current.key);
+            current = current.nextNode;
+          }
+        }
+      }
+    }
+
+    return arr;
+  }
+
+  values() {
+    const arr = [];
+
+    if (this.buckets.length === 0) {
+      return arr;
+    }
+
+    for (let i = 0; i < this.buckets.length; i++) {
+      if (this.buckets[i]) {
+        if (this.buckets[i].size === 1) {
+          arr.push(this.buckets[i].head.value);
+        } else {
+          let current = this.buckets[i].head;
+
+          while (current) {
+            arr.push(current.value);
+            current = current.nextNode;
+          }
+        }
+      }
+    }
+
+    return arr;
+  }
 }
 
 const test = new HashMap();
@@ -186,3 +236,4 @@ console.log(test.has("carrot"));
 console.log(test.length());
 console.log(test.length());
 console.log(test.keys());
+console.log(test.values());
