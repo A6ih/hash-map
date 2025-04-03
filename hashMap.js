@@ -136,6 +136,30 @@ class HashMap {
     this.buckets.length = 0;
   }
 
+  keys() {
+    const arr = [];
+
+    if (this.buckets.length === 0) {
+      return arr;
+    }
+
+    for (let i = 0; i < this.buckets.length; i++) {
+      if (this.buckets[i]) {
+        if (this.buckets[i].size === 1) {
+          arr.push(this.buckets[i].head.key);
+        } else {
+          let current = this.buckets[i].head;
+
+          while (current) {
+            arr.push(current.key);
+            current = current.nextNode;
+          }
+        }
+      }
+    }
+
+    return arr;
+  }
 }
 
 const test = new HashMap();
@@ -160,13 +184,5 @@ console.log(test.get("ice cream"));
 console.log(test.has("ABhi"));
 console.log(test.has("carrot"));
 console.log(test.length());
-test.remove("frog");
-test.remove("ice cream");
 console.log(test.length());
-
-test.clear();
-
-console.log(test.buckets);
-console.log(test.length());
-console.log(test.has("ABhi"));
-console.log(test.has("carrot"));
+console.log(test.keys());
