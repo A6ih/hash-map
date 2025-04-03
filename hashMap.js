@@ -131,6 +131,11 @@ class HashMap {
 
     return count;
   }
+
+  clear() {
+    this.buckets.length = 0;
+  }
+
 }
 
 const test = new HashMap();
@@ -158,3 +163,10 @@ console.log(test.length());
 test.remove("frog");
 test.remove("ice cream");
 console.log(test.length());
+
+test.clear();
+
+console.log(test.buckets);
+console.log(test.length());
+console.log(test.has("ABhi"));
+console.log(test.has("carrot"));
