@@ -99,7 +99,7 @@ class HashMap {
 
     if (this.buckets[hashCode].size === 1) {
       if (this.buckets[hashCode].head.key === key) {
-        this.buckets.splice(hashCode, 1);
+        this.buckets[hashCode] = null;
         return true;
       }
       return false;
@@ -112,6 +112,24 @@ class HashMap {
     } else {
       return false;
     }
+  }
+
+  length() {
+    if (this.buckets.length === 0) {
+      return 0;
+    }
+
+    let count = 0;
+
+    for (let i = 0; i < this.buckets.length; i++) {
+      if (!this.buckets[i]) {
+        count += 0;
+      } else {
+        count += this.buckets[i].size;
+      }
+    }
+
+    return count;
   }
 }
 
@@ -136,5 +154,7 @@ console.log(test.get("carrot"));
 console.log(test.get("ice cream"));
 console.log(test.has("ABhi"));
 console.log(test.has("carrot"));
-console.log(test.remove("ice cream"));
-console.log(test.remove("ABhi"));
+console.log(test.length());
+test.remove("frog");
+test.remove("ice cream");
+console.log(test.length());
