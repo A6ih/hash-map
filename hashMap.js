@@ -1,6 +1,6 @@
 import LinkedList from "./linkedList.js";
 
-class HashMap {
+export default class HashMap {
   constructor(loadFactor) {
     (this.buckets = []),
       (this.capacity = 16),
@@ -255,56 +255,7 @@ class HashMap {
       this.buckets.length = 0;
       this.capacity = this.capacity * 2;
       this.buckets.length = this.capacity;
-      tempArr.forEach(arr => this.set(arr[0], arr[1]));
+      tempArr.forEach((arr) => this.set(arr[0], arr[1]));
     }
   }
 }
-
-const test = new HashMap(0.75);
-
-test.set("apple", "red");
-test.set("banana", "yellow");
-test.set("carrot", "orange");
-test.set("dog", "brown");
-test.set("elephant", "gray");
-test.set("frog", "green");
-test.set("grape", "purple");
-test.set("hat", "black");
-test.set("ice cream", "white");
-test.set("jacket", "blue");
-test.set("kite", "pink");
-test.set("lion", "golden");
-test.set("moon", "silver");
-test.set("apple", "redish");
-test.set("jacket", "blueish");
-test.set("lion", "yelloish");
-test.set("grape", "violet");
-test.clear();
-test.set("apple", "red");
-test.set("banana", "yellow");
-test.set("carrot", "orange");
-test.set("dog", "brown");
-test.set("elephant", "gray");
-test.set("frog", "green");
-test.set("grape", "purple");
-test.set("hat", "black");
-test.set("ice cream", "white");
-test.set("jacket", "blue");
-test.set("kite", "pink");
-test.set("lion", "golden");
-test.set("moon", "silver");
-test.set("apple", "redish");
-test.set("jacket", "blueish");
-test.set("lion", "yelloish");
-test.set("grape", "violet");
-
-console.log(test.buckets);
-console.log(test.buckets.length);
-console.log(test.get("carrot"));
-console.log(test.get("ice cream"));
-console.log(test.has("ABhi"));
-console.log(test.has("carrot"));
-console.log(test.length());
-console.log(test.keys());
-console.log(test.values());
-console.log(test.entries());
